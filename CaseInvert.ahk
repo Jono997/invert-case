@@ -16,14 +16,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     {
         char := SubStr(selected, i, 1)
 
-        ; Do replacement thingies here
         if (RegExMatch(char, "[a-z]") > 0)
             StringUpper, char, char
         else if (RegExMatch(char, "[A-Z]") > 0)
             StringLower, char, char
 
-        temp := SubStr(selected, 1, i - 1) char SubStr(selected, i + 1)
-        selected := temp
+        selected := SubStr(selected, 1, i - 1) char SubStr(selected, i + 1)
         i++
     }
     clipboard := selected
