@@ -6,6 +6,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
 
 ^CapsLock::
     clipboard_temp := ClipboardAll
+    BlockInput, On
     clipboard := ""
     Send, ^c
     ClipWait
@@ -31,4 +32,5 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     Send, ^v
     clipboard := clipboard_temp
     Send, {Shift down}%left_inputs%{Shift up}
+    BlockInput, Off
 Return
