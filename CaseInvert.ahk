@@ -10,6 +10,7 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     Send, ^c
     ClipWait
     selected := clipboard
+    left_inputs := ""
     length := StrLen(selected)
     i := 1
     while (i <= length)
@@ -22,16 +23,12 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
             StringLower, char, char
 
         selected := SubStr(selected, 1, i - 1) char SubStr(selected, i + 1)
+        if (char != "`r")
+            left_inputs := left_inputs "{Left}"
         i++
     }
     clipboard := selected
-    Send, ^v{Shift down}
-    i := 0
-    while (i < length)
-    {
-        Send, {Left}
-        i++
-    }
-    Send, {Shift up}
+    Send, ^v
     clipboard := clipboard_temp
+    Send, {Shift down}%left_inputs%{Shift up}
 Return
