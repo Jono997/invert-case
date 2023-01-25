@@ -1,5 +1,6 @@
 # invert-case
  A utility to add a keyboard shortcut that inverts the case of whatever you have selected  
+ [Releases page](https://github.com/Jono997/invert-case/releases)
 
 ## Usage
 To use, simply run the application. While it's running, highlight any text and press CTRL + Caps Lock. Any text you have highlighted will have the capitalisaiton inverted (all capital letters become lowercase and all lowercase letters become capital.)
