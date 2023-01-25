@@ -10,7 +10,6 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
     Send, ^c
     ClipWait
     selected := clipboard
-    clipboard := clipboard_temp
     length := StrLen(selected)
     i := 1
     while (i <= length)
@@ -27,7 +26,8 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
         selected := temp
         i++
     }
-    Send, %selected%{Shift down}
+    clipboard := selected
+    Send, ^v{Shift down}
     i := 0
     while (i < length)
     {
@@ -35,4 +35,5 @@ SetWorkingDir %A_ScriptDir%  ; Ensures a consistent starting directory.
         i++
     }
     Send, {Shift up}
+    clipboard := clipboard_temp
 Return
